@@ -46,7 +46,6 @@ html { scroll-behavior: smooth; }
 
 .menu-lateral a:hover { color: black; }
 
-/* Galeria modal */
 .modal {
     display: none;
     position: fixed;
@@ -115,8 +114,6 @@ html { scroll-behavior: smooth; }
     border-radius: 50%;
 }
 
-
-/* Lista de caravanas */
 .car-list {
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -150,8 +147,7 @@ html { scroll-behavior: smooth; }
     font-weight: bold;
     color: #333;
 }
-
-/* Hero e outras secções */
+    
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -333,7 +329,7 @@ const modal = document.getElementById("modal");
 
 modal.addEventListener("touchstart", e => {
   startX = e.touches[0].clientX;
-});
+}
 
 modal.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
@@ -341,7 +337,7 @@ modal.addEventListener("touchend", e => {
 
   if (diff > 50) mudarFoto(1);
   if (diff < -50) mudarFoto(-1);
-});
+}
 
 </script>
 
@@ -425,6 +421,7 @@ modal.addEventListener("touchend", e => {
 
 </body>
 </html>
+
 
 
 
