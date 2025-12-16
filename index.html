@@ -328,12 +328,32 @@ document.addEventListener("DOMContentLoaded", () => {
 <nav class="menu-lateral">
     <a href="#home">Início</a>
     <a href="#caravanas">Caravanas</a>
-    <a href="#sobre">Sobre</a>
     <a href="#contacto">Contacto</a>
+    <a href="#sobre">Sobre</a>
 </nav>
 
 <section id="caravanas">
-    <h2>Caravanas Disponíveis</h2>
+    <h2>Disponíveis</h2>
+
+    <div class="car-list">
+        <!-- Caravana 1 -->
+        <div class="car">
+            <img src="Firebrand.473.2006/Firebrand473(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(1)">
+            <h3>Firebrand 473</h3>
+            <p>Leve e fácil de manobrar.</p>
+            <span class="price">€8.999</span>
+        </div>
+
+        <!-- Caravana 2 -->
+        <div class="car">
+            <img src="Pageant/Pageant(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(2)">
+            <h3>Bailey Pegeant</h3>
+            <p>Leve e fácil de manobrar.</p>
+            <span class="price">€10.250</span>
+        </div>
+    </div>
+
+ <h2>Vendidas</h2>
 
     <div class="car-list">
         <!-- Caravana 1 -->
@@ -415,6 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
