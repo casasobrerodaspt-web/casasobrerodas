@@ -322,6 +322,27 @@ function mudarFoto(n) {
 function mostrarFoto(n) {
     document.getElementById("imgModal").src = fotosAtuais[n];
 }
+
+ function toggleMenu() {
+  document.querySelector(".menu-lateral").classList.toggle("ativo");
+}
+
+    let startX = 0;
+
+const modal = document.getElementById("modal");
+
+modal.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+modal.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (diff > 50) mudarFoto(1);
+  if (diff < -50) mudarFoto(-1);
+});
+
 </script>
 
 </head>
@@ -404,6 +425,7 @@ function mostrarFoto(n) {
 
 </body>
 </html>
+
 
 
 
