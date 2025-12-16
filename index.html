@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Casas Sobre Rodas</title>
-  
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -230,6 +232,74 @@ html { scroll-behavior: smooth; }
 }
 
 .contacto-form button:hover { background: black; }
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 15px;
+    padding-left: 15px;
+  }
+
+  .menu-lateral {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  .menu-lateral a {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 50px 15px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .car-list {
+    grid-template-columns: 1fr;
+  }
+
+  .car img {
+    height: 200px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .modal-conteudo {
+    max-width: 95%;
+  }
+
+  .prev,
+  .next {
+    font-size: 30px;
+    padding: 10px;
+  }
+
+  .fechar {
+    font-size: 35px;
+    top: 10px;
+    right: 20px;
+  }
+}
+
 </style>
 
 <script>
@@ -370,4 +440,5 @@ function mostrarFoto(n) {
 
 </body>
 </html>
+
 
