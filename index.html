@@ -408,11 +408,11 @@
 		}
 		
 		function mostrarFoto(n) {
-    const img = document.getElementById("imgModal");
-    const video = document.getElementById("videoModal");
-    const ficheiro = fotosAtuais[n];
-    const prev = document.querySelector(".prev");
-    const next = document.querySelector(".next");
+	    const img = document.getElementById("imgModal");
+	    const video = document.getElementById("videoModal");
+	    const ficheiro = fotosAtuais[n];
+	    const prev = document.querySelector(".prev");
+	    const next = document.querySelector(".next");
 
 
     if (fotosAtuais.length <= 1) {
@@ -421,24 +421,19 @@
     } else {
         prev.style.display = "block";
         next.style.display = "block";
-    }
-
-
-    if (ficheiro.endsWith(".mp4")) {
+    } if (ficheiro.endsWith(".mp4")) {
         img.style.display = "none";
         video.style.display = "block";
         video.src = ficheiro;
         video.load();
         video.play(); // autoplay
-    } 
-    else {
+    } else {
         video.pause();
         video.currentTime = 0;
         video.style.display = "none";
         img.style.display = "block";
         img.src = ficheiro;
-    }
-}
+	}
 		}
 		
 		 let startX = 0;
@@ -639,6 +634,7 @@
 
 </body>
 </html>
+
 
 
 
