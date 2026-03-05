@@ -367,6 +367,9 @@ function abrirGaleria(n) {
 }
 
 function fecharModal() {
+    const video = document.getElementById("videoModal");
+    video.pause();
+    video.currentTime = 0;
     document.getElementById("modal").style.display = "none";
 }
 
@@ -378,7 +381,22 @@ function mudarFoto(n) {
 }
 
 function mostrarFoto(n) {
-    document.getElementById("imgModal").src = fotosAtuais[n];
+    const img = document.getElementById("imgModal");
+    const video = document.getElementById("videoModal");
+    const ficheiro = fotosAtuais[n];
+	
+    if (ficheiro.endsWith(".mp4")) {
+        img.style.display = "none";
+        video.style.display = "block";
+        video.src = ficheiro;
+        video.load();
+    } 
+    else {
+        video.pause();
+        video.style.display = "none";
+        img.style.display = "block";
+        img.src = ficheiro;
+    }
 }
 
  let startX = 0;
@@ -412,7 +430,16 @@ document.addEventListener("DOMContentLoaded", () => {
 <div id="modal" class="modal">
     <span class="fechar" onclick="fecharModal()">&times;</span>
     <div class="modal-conteudo">
-        <img class="modal-img" id="imgModal">
+
+        <!-- IMAGEM -->
+        <img class="modal-img" id="imgModal" style="display:none;">
+
+        <!-- VIDEO -->
+        <video id="videoModal"
+               controls
+               style="display:none; max-width:90%; max-height:80vh; margin:auto; border-radius:8px;">
+        </video>
+
         <a class="prev" onclick="mudarFoto(-1)">&#10094;</a>
         <a class="next" onclick="mudarFoto(1)">&#10095;</a>
     </div>
@@ -447,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		<!-- Caravana 9 -->
         <div class="car">
-            <img src="lunar/patricia.mp4" alt="Lunar" onclick="abrirGaleria(9)">
+            <img src="lunar/lunar14.jpg" alt="Lunar" onclick="abrirGaleria(9)">
             <h3>Lunar Delta</h3>
             <p>2007</p>
             <span class="price">€12.500</span>
@@ -569,6 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
