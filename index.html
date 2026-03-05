@@ -137,7 +137,6 @@
 		    display: flex;
 		    align-items: center;
 		    justify-content: center;
-		    pointer-events: none;
 		}
 	
 		.car-list {
@@ -515,12 +514,13 @@
 			        </div>
 			
 					<!-- Caravana 9 -->
-						 <div class="car video-thumb" onclick="abrirGaleria(9)">
-					    <img src="lunar/lunar14.jpg" alt="Lunar">
-					    <span class="play-icon">▶</span>
-					    <h3>Lunar Delta</h3>
+						 <div class="car video-thumb">
+					    <img src="lunar/lunar14.jpg" alt="Lunar" onclick="abrirGaleria(9)">
+					    <span class="play-icon" onclick="abrirGaleria(9)">▶</span>
+						 <h3>Lunar Delta</h3>
 					    <p>2007</p>
 					    <span class="price">€12.500</span>
+</div>
 					</div>
 			
 			    </div>
@@ -639,6 +639,7 @@
 
 </body>
 </html>
+
 
 
 
