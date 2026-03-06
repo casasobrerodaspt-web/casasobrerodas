@@ -138,10 +138,6 @@
 		.video-thumb {
 		    position: relative;
 		}
-		
-		.video-thumb {
-		    content: "▶";
-		}
 	
 		.play-icon {
 		    position: absolute;
@@ -472,17 +468,16 @@
 		  modal.addEventListener("touchend", e => {
 		    let endX = e.changedTouches[0].clientX;
 		    let diff = startX - endX;
-		  });
 		
 		    if (diff > 50) mudarFoto(1);
 		    if (diff < -50) mudarFoto(-1);
 		  });
+		});
 		
 		function toggleZoom() {
 		    const img = document.getElementById("imgModal");
 		    img.classList.toggle("zoomed");
 		 }
-	 });
 		    
 </script>
 
@@ -664,6 +659,7 @@
 
 </body>
 </html>
+
 
 
 
