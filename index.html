@@ -278,46 +278,61 @@
 		    padding-left: 20px;
 		    }
 		}
-
-					/* MENU MOBILE */
+	
+		/* Botão do menu no topo da tela (mobile) */
+		.menu-toggle {
+			display: none; /* só aparece em telas pequenas */
+			position: fixed;
+			top: 15px;
+			left: 15px;
+			font-size: 30px;
+			cursor: pointer;
+			z-index: 10000;
+			color: #c97900;
+		}
+		
+		/* Menu mobile escondido por padrão */
 		.menu-mobile {
-		    display: none;
-		    position: fixed;
-		    top: 10px;
-		    left: 10px;
-		    z-index: 2000;
+			display: none;
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 70%;
+			height: 100%;
+			background: #CDC9C9;
+			z-index: 9999;
+			padding-top: 80px;
+			box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+			flex-direction: column;
+			align-items: center;
 		}
 		
-		.hamburguer {
-		    font-size: 30px;
-		    cursor: pointer;
-		    background: #c97900;
-		    color: white;
-		    padding: 10px 15px;
-		    border-radius: 5px;
+		/* Quando aberto */
+		.menu-mobile.aberto {
+			display: flex;
 		}
 		
-		.menu-mobile-links {
-		    display: none;
-		    position: fixed;
-		    top: 50px;
-		    left: 10px;
-		    background: #CDC9C9;
-		    border-radius: 5px;
-		    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-		    flex-direction: column;
+		/* Links do menu mobile */
+		.menu-mobile a {
+			color: #c97900;
+			text-decoration: none;
+			font-size: 22px;
+			margin: 20px 0;
+			transition: 0.3s;
 		}
 		
-		.menu-mobile-links a {
-		    padding: 10px 20px;
-		    display: block;
-		    color: #c97900;
-		    text-decoration: none;
+		.menu-mobile a:hover {
+			color: black;
 		}
 		
-		.menu-mobile-links a:hover {
-		    background: #c97900;
-		    color: white;
+		/* Tornar visível o botão de menu e esconder menu lateral em telas pequenas */
+		@media (max-width: 768px) {
+			.menu-toggle {
+				display: block;
+			}
+			.menu-lateral {
+				display: none;
+			}
 		}
 
 			/* Overlay escuro */
@@ -600,23 +615,30 @@
 	    const menu = document.querySelector(".menu-mobile");
 	    menu.classList.toggle("open");
 	}
+
+		function abrirMenuMobile() {
+	    document.getElementById("menuMobile").classList.add("aberto");
+	}
+
+		function fecharMenuMobile() {
+	    document.getElementById("menuMobile").classList.remove("aberto");
+	}
 		    
 </script>
 
 </head>
 <body>
-	
-		<!-- Menu mobile com overlay -->
-		<div class="menu-mobile">
-		    <div class="hamburguer" onclick="toggleMenu()">☰</div>
-		    <div class="overlay" onclick="toggleMenu()"></div>
-		    <div class="menu-mobile-links">
-		        <a onclick="mostrarSecao('home'); toggleMenu()">Início</a>
-		        <a onclick="mostrarSecao('caravanas'); toggleMenu()">Caravanas</a>
-		        <a onclick="mostrarSecao('contacto'); toggleMenu()">Contacto</a>
-		        <a onclick="mostrarSecao('sobre'); toggleMenu()">Sobre</a>
+			
+			<!-- Botão de abrir menu no mobile -->
+		<div class="menu-toggle" onclick="abrirMenuMobile()">☰</div>
+		
+		<!-- Menu Mobile -->
+		<div class="menu-mobile" id="menuMobile">
+		    <a href="#home" onclick="fecharMenuMobile()">Início</a>
+		    <a href="#caravanas" onclick="fecharMenuMobile()">Caravanas</a>
+		    <a href="#contacto" onclick="fecharMenuMobile()">Contacto</a>
+		    <a href="#sobre" onclick="fecharMenuMobile()">Sobre</a>
 		</div>
-		    </div>
 	
 		<section id="home" class="secao ativa hero">
 		    <h1>Casas Sobre Rodas</h1>
@@ -795,6 +817,7 @@
 
 </body>
 </html>
+
 
 
 
