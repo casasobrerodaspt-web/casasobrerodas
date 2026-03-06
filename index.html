@@ -41,21 +41,23 @@
         z-index: 10000;
         color: #c97900;
     }
-    .menu-mobile {
-        display: none;
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 70%;
-        height: 100%;
-        background: #CDC9C9;
-        z-index: 9999;
-        padding-top: 80px;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-    }
-    .menu-mobile.aberto { display: flex; }
+	    .menu-mobile{
+	    position: fixed;
+	    top:0;
+	    left:-300px;
+	    width:260px;
+	    height:100%;
+	    background:#CDC9C9;
+	    z-index:9999;
+	    padding-top:80px;
+	    display:flex;
+	    flex-direction:column;
+	    align-items:center;
+	    transition: left 0.3s ease;
+	    box-shadow:2px 0 10px rgba(0,0,0,0.2);
+	}
+	
+    .menu-mobile.aberto { left: 0; }
     .menu-mobile a {
         color: #c97900;
         text-decoration: none;
@@ -64,6 +66,16 @@
     }
     .menu-mobile a:hover { color: black; }
 
+	#overlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    display:none;
+    z-index:9998;
+	}
 	
 .modal {
     display: none;
@@ -282,6 +294,7 @@
 
 <!-- BOTÃO MOBILE -->
 <div class="menu-toggle" onclick="abrirMenuMobile()">☰</div>
+<div id="overlay" onclick="fecharMenuMobile()"></div>
 
 <!-- MENU MOBILE -->
 <div class="menu-mobile" id="menuMobile">
@@ -452,9 +465,15 @@
         secao.classList.add('ativa');
         window.scrollTo({top:0, behavior:'smooth'});
     }
-    function abrirMenuMobile(){ document.getElementById('menuMobile').classList.add('aberto'); }
-    function fecharMenuMobile(){ document.getElementById('menuMobile').classList.remove('aberto'); }
+	   function abrirMenuMobile(){
+	    document.getElementById("menuMobile").classList.add("aberto");
+	    document.getElementById("overlay").style.display="block";
+	}
 
+	function fecharMenuMobile(){
+	    document.getElementById("menuMobile").classList.remove("aberto");
+	    document.getElementById("overlay").style.display="none";
+	}
     // GALERIA
     let slideIndex = 0;
     let fotosAtuais = [];
@@ -638,6 +657,7 @@
 	
 </body>
 </html>
+
 
 
 
