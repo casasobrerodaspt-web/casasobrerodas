@@ -157,6 +157,7 @@
     .hero h1 { font-size: 48px; margin-bottom: 10px; }
     .hero p { font-size: 22px;}
 
+
 /* GALERIA */
     .car-list {
         display: grid;
@@ -182,6 +183,26 @@
     .car img:hover { transform: scale(1.05); }
     .price { font-size: 16px; font-weight: bold; color: #333; }
 
+	.car.vendida {
+    opacity: 0.6;
+    position: relative;
+}
+
+.car.vendida img {
+    filter: grayscale(40%);
+}
+
+.selo-vendido {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #c40000;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+}
 
 .contacto {
     background: #ffffff;
@@ -311,8 +332,7 @@
 </section>
 
 <section id="caravanas" class="secao caravanas">
-    <h2>Disponíveis</h2>
-
+	
     <div class="car-list">
         <!-- Caravana 1 -->
         <div class="car">
@@ -340,55 +360,60 @@
 
     </div>
 
- <h2>Vendidas</h2>
+		<div class="car-list">
 
-    <div class="car-list">
         <!-- Caravana 3 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="lunar/lunar13.jpg" alt="Lunar Delta" onclick="abrirGaleria(3)">
             <h3>Lunar Delta</h3>
             <p>2014</p>
-	    <span class="price">€17.000 - Vendido</span>
+	    <span class="price">€17.000</span>
         </div>
 
         <!-- Caravana 4 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="fendt/fendt1.jpg" alt="Fendt" onclick="abrirGaleria(4)">
             <h3>Fendt</h3>
 	    <p>2017</p>
-            <span class="price">€18.500 - Vendido</span>
+            <span class="price">€18.500</span>
         </div>
 
 	<!-- Caravana 5 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="adria/adria1.jpg" alt="Adria Altea" onclick="abrirGaleria(5)">
             <h3>Adria Altea</h3>
             <p>2017</p>
-	    <span class="price">€16.999 - Vendido</span>
+	    <span class="price">€16.999</span>
         </div>
 
         <!-- Caravana 6 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="lunar/ultima9.jpg" alt="Lunar" onclick="abrirGaleria(6)">
             <h3>Lunar Ultima</h3>
 	    <p>2015</p>
-            <span class="price">€18.000 - Vendido</span>
+            <span class="price">€18.000</span>
         </div>
 
 		  <!-- Caravana 7 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="bessacarr/cameo12.jpg" alt="Bessacarr" onclick="abrirGaleria(7)">
             <h3>Bessacarr Camel</h3>
             <p>2008</p>
-            <span class="price">€14.500 - Vendido</span>
+            <span class="price">€14.500</span>
         </div>
 
 		 <!-- Caravana 8 -->
-        <div class="car">
+        <div class="car vendida">
+			<div class="selo-vendido">VENDIDO</div>
             <img src="fleethood/640.1.jpeg" alt="Fleethood" onclick="abrirGaleria(8)">
             <h3>Fleethood </h3>
             <p>2008</p>
-            <span class="price">€13.500 - Vendido</span>
+            <span class="price">€13.500</span>
         </div>
     </div>
 </section>
@@ -653,10 +678,12 @@
             if(diff<-50) mudarFoto(-1);
         });
     });
+
 </script>
 	
 </body>
 </html>
+
 
 
 
