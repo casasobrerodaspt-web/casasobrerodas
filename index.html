@@ -278,6 +278,166 @@
     }
 </style>
 
+
+</head>
+<body>
+
+<!-- MENU DESKTOP -->
+<div class="menu-lateral">
+    <a onclick="mostrarSecao('home')">Início</a>
+    <a onclick="mostrarSecao('caravanas')">Caravanas</a>
+    <a onclick="mostrarSecao('contacto')">Contacto</a>
+    <a onclick="mostrarSecao('sobre')">Sobre</a>
+</div>
+
+<!-- BOTÃO MOBILE -->
+<div class="menu-toggle" onclick="abrirMenuMobile()">☰</div>
+
+<!-- MENU MOBILE -->
+<div class="menu-mobile" id="menuMobile">
+    <a onclick="mostrarSecao('home'); fecharMenuMobile()">Início</a>
+    <a onclick="mostrarSecao('caravanas'); fecharMenuMobile()">Caravanas</a>
+    <a onclick="mostrarSecao('contacto'); fecharMenuMobile()">Contacto</a>
+    <a onclick="mostrarSecao('sobre'); fecharMenuMobile()">Sobre</a>
+</div>
+
+<!-- SEÇÕES -->
+<section id="home" class="secao ativa hero">
+    <h1>Casas Sobre Rodas</h1>
+    <p>A caravana dos seus sonhos</p>
+</section>
+
+<section id="caravanas" class="secao caravanas">
+    <h2>Disponíveis</h2>
+
+    <div class="car-list">
+        <!-- Caravana 1 -->
+        <div class="car">
+            <img src="Firebrand.473.2006/Firebrand473(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(1)">
+            <h3>Firebrand 473</h3>
+            <p>2006</p>
+            <span class="price">€8.500</span>
+        </div>
+
+        <!-- Caravana 2 -->
+        <div class="car">
+            <img src="Pageant/Pageant(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(2)">
+            <h3>Bailey Pegeant</h3>
+            <p>2008</p>
+            <span class="price">€9.250</span>
+        </div>
+
+    </div>
+
+ <h2>Vendidas</h2>
+
+    <div class="car-list">
+        <!-- Caravana 3 -->
+        <div class="car">
+            <img src="lunar/lunar13.jpg" alt="Lunar Delta" onclick="abrirGaleria(3)">
+            <h3>Lunar Delta</h3>
+            <p>2014</p>
+	    <span class="price">€17.000 - Vendido</span>
+        </div>
+
+        <!-- Caravana 4 -->
+        <div class="car">
+            <img src="fendt/fendt1.jpg" alt="Fendt" onclick="abrirGaleria(4)">
+            <h3>Fendt</h3>
+	    <p>2017</p>
+            <span class="price">€18.500 - Vendido</span>
+        </div>
+
+	<!-- Caravana 5 -->
+        <div class="car">
+            <img src="adria/adria1.jpg" alt="Adria Altea" onclick="abrirGaleria(5)">
+            <h3>Adria Altea</h3>
+            <p>2017</p>
+	    <span class="price">€16.999 - Vendido</span>
+        </div>
+
+        <!-- Caravana 6 -->
+        <div class="car">
+            <img src="lunar/ultima9.jpg" alt="Lunar" onclick="abrirGaleria(6)">
+            <h3>Lunar Ultima</h3>
+	    <p>2015</p>
+            <span class="price">€18.000 - Vendido</span>
+        </div>
+
+		  <!-- Caravana 7 -->
+        <div class="car">
+            <img src="bessacarr/cameo12.jpg" alt="Bessacarr" onclick="abrirGaleria(1)">
+            <h3>Bessacarr Camel</h3>
+            <p>2008</p>
+            <span class="price">€14.500 - Vendido</span>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="secao contacto">
+    <h2>Contacto</h2>
+    <p>📍 Palmela</p>
+    <p>📞 +351 966097073</p>
+    <p>📧 casasobrerodaspt@gmail.com</p>
+
+ <a href="https://wa.me/351966097073?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20caravanas."
+   class="btn-whatsapp"
+   target="_blank"
+   aria-label="Fale connosco no WhatsApp">
+   💬 Fale connosco no WhatsApp
+</a>
+</section>
+	
+<section id="sobre" class="secao sobre">
+    <h2>Sobre Nós</h2>
+    <p> Somos uma empresa em crescimento focada em oferecer caravanas de qualidade superior, pensadas para quem procura conforto, confiança e uma experiência diferenciada desde o primeiro contacto.<br>
+        Trabalhamos com caravanas novas, usadas e importadas, sempre cuidadosamente selecionadas, revistas e preparadas para cumprir um padrão elevado. Quer seja para férias, escapadinhas ou longas estadias, tratamos de tudo para que só tenha de desfrutar.
+    </p>
+    <h3> 🚐 O que nos distingue:</h3>
+        <ul>
+        <li>Stand físico e acompanhamento online, para maior comodidade;</li>
+        <li>Trabalhamos com todas as marcas do mercado;</li>
+        <li>Somos a empresa oficial portuguesa com maior volume de importações;</li>
+        <li>Entregas em todo o país e ilhas;</li>
+        <li>Todas as caravanas passam por revisão completa e testes, garantindo que tudo funciona na perfeição;</li>
+        <li>Oferecemos garantia, para total tranquilidade;</li>
+        <li>Acompanhamento personalizado e próximo, focado nas reais necessidades de cada cliente;</li>
+        </ul>
+    
+    <h3>📐 A nossa oferta:</h3>
+    <ul>
+    <li>Caravanas dos 4 aos 9 metros de comprimento;</li>
+    <li>Modelos para 2 até 6 ou 7 pessoas;</li>
+    <li>Caravanas de várias idades, com preferência por modelos dos anos 2000 em diante, assegurando conforto, modernização e fiabilidade;</li>
+    <li>✨ Caravanas feitas à sua medida;</li>
+    <li>Trabalhamos também por encomenda, procurando exatamente a caravana que o cliente sonha: layout, disposição, ano, tamanho e características específicas;</li>
+    <li>Possibilidade de acrescentar extras e equipamentos (painéis solares, ar condicionado, mover, entre outros), totalmente à escolha do cliente, mediante orçamento.</li>
+    </ul>
+
+    <h3> 💶 Opções de preço:</h3>
+    <ul>
+    <li>Caravana com documentação em nome do cliente;</li>
+    <li>Caravana documentada e com matrícula portuguesa;</li>
+    </ul>
+    
+    <p>🔜 Brevemente com possibilidade de financiamento, para tornar o processo ainda mais simples.
+    </p>
+    <p>O nosso compromisso é claro: ser especialistas de confiança e entregar uma experiência premium, garantindo que cada cliente encontra a caravana certa, sem compromissos.
+    </p>
+
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <span class="fechar" onclick="fecharModal()">&times;</span>
+    <div class="modal-conteudo">
+        <img id="imgModal" class="modal-img" style="display:none;" onclick="toggleZoom()">
+        <video id="videoModal" controls style="display:none;"></video>
+        <a class="prev" onclick="mudarFoto(-1)">&#10094;</a>
+        <a class="next" onclick="mudarFoto(1)">&#10095;</a>
+    </div>
+</div>
+
 <script>
     // MENU SEÇÕES
     function mostrarSecao(id){
@@ -469,166 +629,9 @@
         });
     });
 </script>
-</head>
-<body>
-
-<!-- MENU DESKTOP -->
-<div class="menu-lateral">
-    <a onclick="mostrarSecao('home')">Início</a>
-    <a onclick="mostrarSecao('caravanas')">Caravanas</a>
-    <a onclick="mostrarSecao('contacto')">Contacto</a>
-    <a onclick="mostrarSecao('sobre')">Sobre</a>
-</div>
-
-<!-- BOTÃO MOBILE -->
-<div class="menu-toggle" onclick="abrirMenuMobile()">☰</div>
-
-<!-- MENU MOBILE -->
-<div class="menu-mobile" id="menuMobile">
-    <a onclick="mostrarSecao('home'); fecharMenuMobile()">Início</a>
-    <a onclick="mostrarSecao('caravanas'); fecharMenuMobile()">Caravanas</a>
-    <a onclick="mostrarSecao('contacto'); fecharMenuMobile()">Contacto</a>
-    <a onclick="mostrarSecao('sobre'); fecharMenuMobile()">Sobre</a>
-</div>
-
-<!-- SEÇÕES -->
-<section id="home" class="secao ativa hero">
-    <h1>Casas Sobre Rodas</h1>
-    <p>A caravana dos seus sonhos</p>
-</section>
-
-<section id="caravanas" class="secao caravanas">
-    <h2>Disponíveis</h2>
-
-    <div class="car-list">
-        <!-- Caravana 1 -->
-        <div class="car">
-            <img src="Firebrand.473.2006/Firebrand473(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(1)">
-            <h3>Firebrand 473</h3>
-            <p>2006</p>
-            <span class="price">€8.500</span>
-        </div>
-
-        <!-- Caravana 2 -->
-        <div class="car">
-            <img src="Pageant/Pageant(1).jpg" alt="Firebrand 473" onclick="abrirGaleria(2)">
-            <h3>Bailey Pegeant</h3>
-            <p>2008</p>
-            <span class="price">€9.250</span>
-        </div>
-
-    </div>
-
- <h2>Vendidas</h2>
-
-    <div class="car-list">
-        <!-- Caravana 3 -->
-        <div class="car">
-            <img src="lunar/lunar13.jpg" alt="Lunar Delta" onclick="abrirGaleria(3)">
-            <h3>Lunar Delta</h3>
-            <p>2014</p>
-	    <span class="price">€17.000 - Vendido</span>
-        </div>
-
-        <!-- Caravana 4 -->
-        <div class="car">
-            <img src="fendt/fendt1.jpg" alt="Fendt" onclick="abrirGaleria(4)">
-            <h3>Fendt</h3>
-	    <p>2017</p>
-            <span class="price">€18.500 - Vendido</span>
-        </div>
-
-	<!-- Caravana 5 -->
-        <div class="car">
-            <img src="adria/adria1.jpg" alt="Adria Altea" onclick="abrirGaleria(5)">
-            <h3>Adria Altea</h3>
-            <p>2017</p>
-	    <span class="price">€16.999 - Vendido</span>
-        </div>
-
-        <!-- Caravana 6 -->
-        <div class="car">
-            <img src="lunar/ultima9.jpg" alt="Lunar" onclick="abrirGaleria(6)">
-            <h3>Lunar Ultima</h3>
-	    <p>2015</p>
-            <span class="price">€18.000 - Vendido</span>
-        </div>
-
-		  <!-- Caravana 7 -->
-        <div class="car">
-            <img src="bessacarr/cameo12.jpg" alt="Bessacarr" onclick="abrirGaleria(1)">
-            <h3>Bessacarr Camel</h3>
-            <p>2008</p>
-            <span class="price">€14.500 - Vendido</span>
-        </div>
-    </div>
-</section>
-
-<section id="contacto" class="secao contacto">
-    <h2>Contacto</h2>
-    <p>📍 Palmela</p>
-    <p>📞 +351 966097073</p>
-    <p>📧 casasobrerodaspt@gmail.com</p>
-
- <a href="https://wa.me/351966097073?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20caravanas."
-   class="btn-whatsapp"
-   target="_blank"
-   aria-label="Fale connosco no WhatsApp">
-   💬 Fale connosco no WhatsApp
-</a>
-</section>
 	
-<section id="sobre" class="secao sobre">
-    <h2>Sobre Nós</h2>
-    <p> Somos uma empresa em crescimento focada em oferecer caravanas de qualidade superior, pensadas para quem procura conforto, confiança e uma experiência diferenciada desde o primeiro contacto.<br>
-        Trabalhamos com caravanas novas, usadas e importadas, sempre cuidadosamente selecionadas, revistas e preparadas para cumprir um padrão elevado. Quer seja para férias, escapadinhas ou longas estadias, tratamos de tudo para que só tenha de desfrutar.
-    </p>
-    <h3> 🚐 O que nos distingue:</h3>
-        <ul>
-        <li>Stand físico e acompanhamento online, para maior comodidade;</li>
-        <li>Trabalhamos com todas as marcas do mercado;</li>
-        <li>Somos a empresa oficial portuguesa com maior volume de importações;</li>
-        <li>Entregas em todo o país e ilhas;</li>
-        <li>Todas as caravanas passam por revisão completa e testes, garantindo que tudo funciona na perfeição;</li>
-        <li>Oferecemos garantia, para total tranquilidade;</li>
-        <li>Acompanhamento personalizado e próximo, focado nas reais necessidades de cada cliente;</li>
-        </ul>
-    
-    <h3>📐 A nossa oferta:</h3>
-    <ul>
-    <li>Caravanas dos 4 aos 9 metros de comprimento;</li>
-    <li>Modelos para 2 até 6 ou 7 pessoas;</li>
-    <li>Caravanas de várias idades, com preferência por modelos dos anos 2000 em diante, assegurando conforto, modernização e fiabilidade;</li>
-    <li>✨ Caravanas feitas à sua medida;</li>
-    <li>Trabalhamos também por encomenda, procurando exatamente a caravana que o cliente sonha: layout, disposição, ano, tamanho e características específicas;</li>
-    <li>Possibilidade de acrescentar extras e equipamentos (painéis solares, ar condicionado, mover, entre outros), totalmente à escolha do cliente, mediante orçamento.</li>
-    </ul>
-
-    <h3> 💶 Opções de preço:</h3>
-    <ul>
-    <li>Caravana com documentação em nome do cliente;</li>
-    <li>Caravana documentada e com matrícula portuguesa;</li>
-    </ul>
-    
-    <p>🔜 Brevemente com possibilidade de financiamento, para tornar o processo ainda mais simples.
-    </p>
-    <p>O nosso compromisso é claro: ser especialistas de confiança e entregar uma experiência premium, garantindo que cada cliente encontra a caravana certa, sem compromissos.
-    </p>
-
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <span class="fechar" onclick="fecharModal()">&times;</span>
-    <div class="modal-conteudo">
-        <img id="imgModal" class="modal-img" style="display:none;" onclick="toggleZoom()">
-        <video id="videoModal" controls style="display:none;"></video>
-        <a class="prev" onclick="mudarFoto(-1)">&#10094;</a>
-        <a class="next" onclick="mudarFoto(1)">&#10095;</a>
-    </div>
-</div>
-
 </body>
 </html>
+
 
 
