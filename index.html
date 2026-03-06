@@ -21,7 +21,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 120px;
+        width: 100px;
         height: 100%;
         background: #CDC9C9;
         display: flex;
@@ -34,9 +34,9 @@
     .menu-lateral a {
         color: #c97900;
         text-decoration: none;
-        margin: 30px 0;
-        font-size: 16px;
-        cursor: pointer;
+        margin: 60px 0;
+        font-size: 18px;
+        transition: 0.3s;
     }
     .menu-lateral a:hover { color: black; }
 
@@ -74,11 +74,76 @@
     }
     .menu-mobile a:hover { color: black; }
 
-    /* SEÇÕES */
-    .secao { padding: 20px; display: none; }
-    .secao.ativa { display: block; }
+	
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
 
-    /* HERO */
+.modal-conteudo {
+    position: relative;
+    margin: auto;
+    max-width: 80%;
+}
+
+.modal-img, #videoModal {
+        max-width: 95%;
+        max-height: 90vh;
+        display: block;
+        margin: auto;
+        border-radius: 8px;
+    }
+    .modal-img.zoomed { transform: scale(1.8); cursor: zoom-out; }
+    .modal-img { cursor: zoom-in; transition: transform 0.3s ease; }
+
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+
+}
+
+.prev {
+ cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    user-select: none;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+.next {
+ cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    user-select: none;
+    background: rgba(0,0,0,0.3);
+    border-radius: 50%;
+}
+
+/* HERO */
     .hero {
         text-align: center;
         padding: 80px 20px;
@@ -88,9 +153,9 @@
         margin-bottom: 20px;
     }
     .hero h1 { font-size: 48px; margin-bottom: 10px; }
-    .hero p { font-size: 22px; }
+    .hero p { font-size: 22px;}
 
-    /* GALERIA */
+/* GALERIA */
     .car-list {
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -115,6 +180,67 @@
     .car img:hover { transform: scale(1.05); }
     .price { font-size: 16px; font-weight: bold; color: #333; }
 
+
+.contacto {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+.contacto h2 { color: #163d70; margin-bottom: 20px; }
+
+.contacto-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contacto-form input,
+.contacto-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #25D366;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe5d;
+}
+	
+	.sobre {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+.sobre h2 { color: #c97900; margin-bottom: 15px; }
+.sobre p { font-size: 18px; line-height: 1.6; color: #333; margin-bottom: 15px; }
+
+	
+    /* SEÇÕES */
+    .secao { padding: 20px; display: none; }
+    .secao.ativa { display: block; }
+
+	
+
     .video-thumb { position: relative; }
     .play-icon {
         position: absolute;
@@ -133,32 +259,6 @@
         cursor: pointer;
     }
 
-    /* MODAL */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 10000;
-        padding-top: 60px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.9);
-    }
-    .modal-conteudo {
-        position: relative;
-        margin: auto;
-        max-width: 80%;
-    }
-    .modal-img, #videoModal {
-        max-width: 95%;
-        max-height: 90vh;
-        display: block;
-        margin: auto;
-        border-radius: 8px;
-    }
-    .modal-img.zoomed { transform: scale(1.8); cursor: zoom-out; }
-    .modal-img { cursor: zoom-in; transition: transform 0.3s ease; }
 
     .fechar {
         position: absolute;
@@ -168,22 +268,7 @@
         font-size: 40px;
         cursor: pointer;
     }
-    .prev, .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 16px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
-        user-select: none;
-        background: rgba(0,0,0,0.3);
-        border-radius: 50%;
-    }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-
+    
     /* RESPONSIVO */
     @media (max-width:768px){
         .menu-toggle { display: block; }
@@ -412,7 +497,7 @@
     <p>A caravana dos seus sonhos</p>
 </section>
 
-<section id="caravanas" class="secao">
+<section id="caravanas" class="secao ativa caravanas">
     <h2>Disponíveis</h2>
 
     <div class="car-list">
@@ -479,7 +564,7 @@
     </div>
 </section>
 
-<section id="contacto" class="secao">
+<section id="contacto" class="secao ativa contacto">
     <h2>Contacto</h2>
     <p>📍 Palmela</p>
     <p>📞 +351 966097073</p>
@@ -493,7 +578,7 @@
 </a>
 </section>
 	
-<section id="sobre" class="sobre">
+<section id="sobre" class="secao ativa sobre">
     <h2>Sobre Nós</h2>
     <p> Somos uma empresa em crescimento focada em oferecer caravanas de qualidade superior, pensadas para quem procura conforto, confiança e uma experiência diferenciada desde o primeiro contacto.<br>
         Trabalhamos com caravanas novas, usadas e importadas, sempre cuidadosamente selecionadas, revistas e preparadas para cumprir um padrão elevado. Quer seja para férias, escapadinhas ou longas estadias, tratamos de tudo para que só tenha de desfrutar.
@@ -545,3 +630,4 @@
 
 </body>
 </html>
+
