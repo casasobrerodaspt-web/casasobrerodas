@@ -84,7 +84,7 @@
 		    transition: transform 0.3s ease;
 		}
 
-		.videoModal {
+		#videoModal {
 		    max-width: 95%;
 		    max-height: 90vh;
 		    width: auto;
@@ -406,30 +406,30 @@
 			
 		];
 
-		document.getElementById("imgModal").classList.remove("zoomed");
 		
 		function abrirGaleria(n) {
 		    slideIndex = 0;
-		    fotosAtuais = galerias[n-1]; // seleciona a galeria da caravana
+		    fotosAtuais = galerias[n-1]; 
 		    document.getElementById("modal").style.display = "block";
 		    mostrarFoto(slideIndex);
-		}
+		 });
 		
 		function fecharModal() {
 		    const video = document.getElementById("videoModal");
 		    video.pause();
 		    video.currentTime = 0;
 		    document.getElementById("modal").style.display = "none";
-		}
+		 });
 		
 		function mudarFoto(n) {
 		    slideIndex += n;
 		    if(slideIndex >= fotosAtuais.length) slideIndex = 0;
 		    if(slideIndex < 0) slideIndex = fotosAtuais.length - 1;
 		    mostrarFoto(slideIndex);
-		}
+		 });
 		
 		function mostrarFoto(n) {
+		img.classList.remove("zoomed");
 	    const img = document.getElementById("imgModal");
 	    const video = document.getElementById("videoModal");
 	    const ficheiro = fotosAtuais[n];
@@ -455,8 +455,7 @@
         video.style.display = "none";
         img.style.display = "block";
         img.src = ficheiro;
-	}
-		}
+	 });
 		
 		 let startX = 0;
 		
@@ -465,7 +464,7 @@
 		
 		  modal.addEventListener("touchstart", e => {
 		    startX = e.touches[0].clientX;
-		  )
+		  });
 		
 		  modal.addEventListener("touchend", e => {
 		    let endX = e.changedTouches[0].clientX;
@@ -473,12 +472,13 @@
 		
 		    if (diff > 50) mudarFoto(1);
 		    if (diff < -50) mudarFoto(-1);
-		  )
+		  });
 		
 		function toggleZoom() {
 		    const img = document.getElementById("imgModal");
 		    img.classList.toggle("zoomed");
-		)	
+		 }
+	 });
 		    
 </script>
 
@@ -660,6 +660,7 @@
 
 </body>
 </html>
+
 
 
 
