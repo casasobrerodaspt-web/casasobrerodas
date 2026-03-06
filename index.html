@@ -21,6 +21,14 @@
 		p { color: black; }
 		
 		html { scroll-behavior: smooth; }
+
+		.secao {
+    		display: none;
+		}
+		
+		.secao.ativa {
+		    display: block;
+		}
 		
 		.menu-lateral {
 		    position: fixed;
@@ -271,6 +279,104 @@
 		    }
 		}
 
+					/* MENU MOBILE */
+		.menu-mobile {
+		    display: none;
+		    position: fixed;
+		    top: 10px;
+		    left: 10px;
+		    z-index: 2000;
+		}
+		
+		.hamburguer {
+		    font-size: 30px;
+		    cursor: pointer;
+		    background: #c97900;
+		    color: white;
+		    padding: 10px 15px;
+		    border-radius: 5px;
+		}
+		
+		.menu-mobile-links {
+		    display: none;
+		    position: fixed;
+		    top: 50px;
+		    left: 10px;
+		    background: #CDC9C9;
+		    border-radius: 5px;
+		    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+		    flex-direction: column;
+		}
+		
+		.menu-mobile-links a {
+		    padding: 10px 20px;
+		    display: block;
+		    color: #c97900;
+		    text-decoration: none;
+		}
+		
+		.menu-mobile-links a:hover {
+		    background: #c97900;
+		    color: white;
+		}
+
+			/* Overlay escuro */
+		.menu-mobile .overlay {
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background: rgba(0,0,0,0.4);
+		    display: none;
+		    z-index: 1500;
+		    opacity: 0;
+		    transition: opacity 0.3s ease;
+		}
+		
+		/* Menu mobile deslizando */
+		.menu-mobile-links {
+		    display: flex;
+		    flex-direction: column;
+		    position: fixed;
+		    top: 0;
+		    left: -250px; /* começa fora da tela */
+		    width: 200px;
+		    height: 100%;
+		    background: #CDC9C9;
+		    z-index: 2000;
+		    padding-top: 60px;
+		    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+		    transition: left 0.3s ease;
+		}
+		
+		.menu-mobile-links a {
+		    padding: 15px 20px;
+		    display: block;
+		    color: #c97900;
+		    text-decoration: none;
+		}
+		
+		.menu-mobile-links a:hover {
+		    background: #c97900;
+		    color: white;
+		}
+		
+		/* Menu ativo */
+		.menu-mobile.open .menu-mobile-links {
+		    left: 0; /* desliza para dentro da tela */
+		}
+		
+		.menu-mobile.open .overlay {
+		    display: block;
+		    opacity: 1;
+		}
+		
+		/* Mostrar menu mobile apenas em telas pequenas */
+		@media (max-width: 768px) {
+		    .menu-mobile { display: flex; flex-direction: column; }
+		}
+
 </style>
 
 <script>
@@ -478,12 +584,41 @@
 		    const img = document.getElementById("imgModal");
 		    img.classList.toggle("zoomed");
 		 }
+	
+		function mostrarSecao(id) {
+	
+	    const secoes = document.querySelectorAll(".secao");
+	
+	    secoes.forEach(secao => {
+	        secao.classList.remove("ativa");
+	    });
+	
+	    document.getElementById(id).classList.add("ativa");
+	}
+	
+		function toggleMenu() {
+	    const menu = document.querySelector(".menu-mobile");
+	    menu.classList.toggle("open");
+	}
 		    
 </script>
 
 </head>
 <body>
-		<section id="home" class="hero">
+	
+		<!-- Menu mobile com overlay -->
+		<div class="menu-mobile">
+		    <div class="hamburguer" onclick="toggleMenu()">☰</div>
+		    <div class="overlay" onclick="toggleMenu()"></div>
+		    <div class="menu-mobile-links">
+		        <a onclick="mostrarSecao('home'); toggleMenu()">Início</a>
+		        <a onclick="mostrarSecao('caravanas'); toggleMenu()">Caravanas</a>
+		        <a onclick="mostrarSecao('contacto'); toggleMenu()">Contacto</a>
+		        <a onclick="mostrarSecao('sobre'); toggleMenu()">Sobre</a>
+		</div>
+		    </div>
+	
+		<section id="home" class="secao ativa hero">
 		    <h1>Casas Sobre Rodas</h1>
 		    <p>A caravana dos seus sonhos</p>
 		</section>
@@ -506,14 +641,14 @@
 		    </div>
 		</div>
 
-		<nav class="menu-lateral">
-		    <a href="#home">Início</a>
-		    <a href="#caravanas">Caravanas</a>
-		    <a href="#contacto">Contacto</a>
-		    <a href="#sobre">Sobre</a>
+		<nav
+			<a onclick="mostrarSecao('home')">Início</a>
+			<a onclick="mostrarSecao('caravanas')">Caravanas</a>
+			<a onclick="mostrarSecao('contacto')">Contacto</a>
+			<a onclick="mostrarSecao('sobre')">Sobre</a>
 		</nav>
 
-		<section id="caravanas">
+		<section id="caravanas" class="secao">
 		    <h2>Disponíveis</h2>
 			
 			    <div class="car-list">
@@ -598,7 +733,7 @@
 			</div>
 </section>
     
-		<section id="contacto" class="contacto">
+		<section id="contacto" class="contacto secao">
 		   
 		   <p>
 			   📍🗺 Palmela
@@ -619,7 +754,7 @@
 
 </section>
 
-		<section id="sobre" class="sobre">
+		<section id="sobre" class="sobre secao">
 		    <h2>Sobre Nós</h2>
 		    <p> Somos uma empresa em crescimento focada em oferecer caravanas de qualidade superior, pensadas para quem procura conforto, confiança e uma experiência diferenciada desde o primeiro contacto.<br>
 		        Trabalhamos com caravanas novas, usadas e importadas, sempre cuidadosamente selecionadas, revistas e preparadas para cumprir um padrão elevado. Quer seja para férias, escapadinhas ou longas estadias, tratamos de tudo para que só tenha de desfrutar.
@@ -660,6 +795,7 @@
 
 </body>
 </html>
+
 
 
 
