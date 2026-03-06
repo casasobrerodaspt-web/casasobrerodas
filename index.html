@@ -6,31 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        background: #CDC9C9;
-        padding-left: 120px;
-    }
+	    body {
+	    font-family: Arial, sans-serif;
+	    margin: 0;
+	    background: #CDC9C9;
+	    padding-left: 20px;
+	}
+	
     html { scroll-behavior: smooth; }
     h1 { color: #c97900; }
     p { color: black; }
-
-    /* MENU DESKTOP */
-    .menu-lateral {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100px;
-        height: 100%;
-        background: #CDC9C9;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 50px;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
+	
+	    .menu-lateral {
+	    display: none;
+	}
+	
     .menu-lateral a {
         color: #c97900;
         text-decoration: none;
@@ -40,9 +30,9 @@
     }
     .menu-lateral a:hover { color: black; }
 
-    /* MENU MOBILE */
+    
     .menu-toggle {
-        display: none;
+        display: block;
         position: fixed;
         top: 15px;
         left: 15px;
@@ -648,6 +638,7 @@
 	
 </body>
 </html>
+
 
 
 
