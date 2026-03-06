@@ -65,8 +65,28 @@
 		}
 		
 		.modal-img {
-		    max-width: 90%;
-		    max-height: 80vh;
+		    max-width: 95%;
+		    max-height: 90vh;
+		    width: auto;
+		    height: auto;
+		    display: block;
+		    margin: auto;
+		    border-radius: 8px;
+		}
+	
+		.modal-img.zoomed {
+		    transform: scale(1.8);
+		    cursor: zoom-out;
+		}
+
+		.modal-img {
+		    cursor: zoom-in;
+		    transition: transform 0.3s ease;
+		}
+
+		.videoModal {
+		    max-width: 95%;
+		    max-height: 90vh;
 		    width: auto;
 		    height: auto;
 		    display: block;
@@ -385,6 +405,8 @@
 		],
 			
 		];
+
+		document.getElementById("imgModal").classList.remove("zoomed");
 		
 		function abrirGaleria(n) {
 		    slideIndex = 0;
@@ -443,7 +465,7 @@
 		
 		  modal.addEventListener("touchstart", e => {
 		    startX = e.touches[0].clientX;
-		  });
+		  )
 		
 		  modal.addEventListener("touchend", e => {
 		    let endX = e.changedTouches[0].clientX;
@@ -451,8 +473,12 @@
 		
 		    if (diff > 50) mudarFoto(1);
 		    if (diff < -50) mudarFoto(-1);
-		  });
-		});
+		  )
+		
+		function toggleZoom() {
+		    const img = document.getElementById("imgModal");
+		    img.classList.toggle("zoomed");
+		)	
 		    
 </script>
 
@@ -468,7 +494,7 @@
 		    <div class="modal-conteudo">
 		
 		        <!-- IMAGEM -->
-		        <img class="modal-img" id="imgModal" style="display:none;">
+		        <img class="modal-img" id="imgModal" style="display:none;" onclick="toggleZoom()">
 		
 		        <!-- VIDEO -->
 		        <video id="videoModal"
@@ -634,6 +660,7 @@
 
 </body>
 </html>
+
 
 
 
