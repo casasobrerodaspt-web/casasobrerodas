@@ -412,51 +412,54 @@
 		    fotosAtuais = galerias[n-1]; 
 		    document.getElementById("modal").style.display = "block";
 		    mostrarFoto(slideIndex);
-		 });
+		 }
 		
 		function fecharModal() {
 		    const video = document.getElementById("videoModal");
 		    video.pause();
 		    video.currentTime = 0;
 		    document.getElementById("modal").style.display = "none";
-		 });
+		 }
 		
 		function mudarFoto(n) {
 		    slideIndex += n;
 		    if(slideIndex >= fotosAtuais.length) slideIndex = 0;
 		    if(slideIndex < 0) slideIndex = fotosAtuais.length - 1;
 		    mostrarFoto(slideIndex);
-		 });
+		 }
 		
 		function mostrarFoto(n) {
-		img.classList.remove("zoomed");
+	
 	    const img = document.getElementById("imgModal");
+	    img.classList.remove("zoomed");
+	
 	    const video = document.getElementById("videoModal");
 	    const ficheiro = fotosAtuais[n];
 	    const prev = document.querySelector(".prev");
 	    const next = document.querySelector(".next");
-
-
-    if (fotosAtuais.length <= 1) {
-        prev.style.display = "none";
-        next.style.display = "none";
-    } else {
-        prev.style.display = "block";
-        next.style.display = "block";
-    } if (ficheiro.endsWith(".mp4")) {
-        img.style.display = "none";
-        video.style.display = "block";
-        video.src = ficheiro;
-        video.load();
-        video.play(); // autoplay
-    } else {
-        video.pause();
-        video.currentTime = 0;
-        video.style.display = "none";
-        img.style.display = "block";
-        img.src = ficheiro;
-	 });
-		
+	
+	    if (fotosAtuais.length <= 1) {
+	        prev.style.display = "none";
+	        next.style.display = "none";
+	    } else {
+	        prev.style.display = "block";
+	        next.style.display = "block";
+	    }
+	
+	    if (ficheiro.endsWith(".mp4")) {
+	        img.style.display = "none";
+	        video.style.display = "block";
+	        video.src = ficheiro;
+	        video.load();
+	        video.play();
+	    } else {
+	        video.pause();
+	        video.currentTime = 0;
+	        video.style.display = "none";
+	        img.style.display = "block";
+	        img.src = ficheiro;
+	    }
+	}
 		 let startX = 0;
 		
 		document.addEventListener("DOMContentLoaded", () => {
@@ -469,6 +472,7 @@
 		  modal.addEventListener("touchend", e => {
 		    let endX = e.changedTouches[0].clientX;
 		    let diff = startX - endX;
+		  });
 		
 		    if (diff > 50) mudarFoto(1);
 		    if (diff < -50) mudarFoto(-1);
@@ -660,6 +664,7 @@
 
 </body>
 </html>
+
 
 
 
