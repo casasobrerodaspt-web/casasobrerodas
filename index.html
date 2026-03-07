@@ -403,17 +403,14 @@
 </a>
 
 <a href="#caravana3" class="carousel-item vendida">
-<span class="selo">VENDIDO</span>
 <img src="lunar/lunar13.jpg" onclick="abrirGaleria(3)">
 </a>
 
 <a href="#caravana4" class="carousel-item vendida">
-<span class="selo">VENDIDO</span>
 <img src="fendt/fendt1.jpg" onclick="abrirGaleria(4)">
 </a>
 
 <a href="#caravana5" class="carousel-item vendida">
-<span class="selo">VENDIDO</span>
 <img src="adria/adria1.jpg" onclick="abrirGaleria(5)">
 </a>
 
@@ -767,7 +764,6 @@
     const carousel = document.querySelector(".carousel");
     if (!carousel) return;
 
-    // DUPLICAR ITENS PARA LOOP SUAVE
     const items = Array.from(carousel.children);
     items.forEach(item => {
         const clone = item.cloneNode(true);
@@ -775,12 +771,12 @@
     });
 
     let scrollAmount = 0;
-    const speed = 1; // pixels por frame
-    const frameTime = 16; // ~60fps
+    const speed = 1; 
+    const frameTime = 16; 
 
     function loop() {
         scrollAmount += speed;
-        if (scrollAmount >= carousel.scrollWidth / 2) { // volta ao início após metade (clones)
+        if (scrollAmount >= carousel.scrollWidth / 2) {
             scrollAmount = 0;
         }
         carousel.scrollLeft = scrollAmount;
@@ -789,7 +785,6 @@
 
     loop();
 
-    // Drag funcionalidade
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -815,6 +810,7 @@
 	
 </body>
 </html>
+
 
 
 
