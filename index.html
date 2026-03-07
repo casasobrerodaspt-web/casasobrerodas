@@ -774,7 +774,11 @@
         });
     });
 	
+	document.addEventListener("DOMContentLoaded", function() {
+
 	const carousel = document.querySelector(".carousel");
+	
+	if(carousel){
 	
 	setInterval(() => {
 	carousel.scrollBy({
@@ -782,7 +786,7 @@
 	behavior: "smooth"
 	});
 	}, 4000);
-
+	
 	let isDown = false;
 	let startX;
 	let scrollLeft;
@@ -809,41 +813,11 @@
 	carousel.scrollLeft = scrollLeft - walk;
 	});
 	
+	}
+	
+	});
+	
 </script>
 	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
