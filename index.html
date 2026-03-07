@@ -196,19 +196,6 @@
 	transform:scale(1.03);
 	}
 
-	.selo{
-	position:absolute;
-	top:10px;
-	right:10px;
-	background:#c97900;
-	color:white;
-	padding:6px 12px;
-	font-size:12px;
-	font-weight:bold;
-	border-radius:20px;
-	z-index:1000;
-	}
-
 /* GALERIA */
     .car-list {
         display: grid;
@@ -776,58 +763,58 @@
 	
 	document.addEventListener("DOMContentLoaded", function() {
 
-	const carousel = document.querySelector(".carousel");
-	
-	if(carousel){
-	
-	setInterval(() => {
-	carousel.scrollBy({
-	left: 280,
-	behavior: "smooth"
-	});
-	}, 4000);
+	document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.querySelector(".carousel");
+    if (!carousel) return;
 
-	setInterval(() => {
-    if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-      carousel.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    // DUPLICAR ITENS PARA LOOP SUAVE
+    const items = Array.from(carousel.children);
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        carousel.appendChild(clone);
+    });
+
+    let scrollAmount = 0;
+    const speed = 1; // pixels por frame
+    const frameTime = 16; // ~60fps
+
+    function loop() {
+        scrollAmount += speed;
+        if (scrollAmount >= carousel.scrollWidth / 2) { // volta ao início após metade (clones)
+            scrollAmount = 0;
+        }
+        carousel.scrollLeft = scrollAmount;
+        requestAnimationFrame(loop);
     }
-  }, scrollInterval);
-	
-	let isDown = false;
-	let startX;
-	let scrollLeft;
-	
-	carousel.addEventListener("mousedown", (e) => {
-	isDown = true;
-	startX = e.pageX - carousel.offsetLeft;
-	scrollLeft = carousel.scrollLeft;
-	});
-	
-	carousel.addEventListener("mouseleave", () => {
-	isDown = false;
-	});
-	
-	carousel.addEventListener("mouseup", () => {
-	isDown = false;
-	});
-	
-	carousel.addEventListener("mousemove", (e) => {
-	if(!isDown) return;
-	e.preventDefault();
-	const x = e.pageX - carousel.offsetLeft;
-	const walk = (x - startX) * 2;
-	carousel.scrollLeft = scrollLeft - walk;
-	});
-	
-	}
-	
-	});
+
+    loop();
+
+    // Drag funcionalidade
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = scrollAmount;
+    });
+
+    carousel.addEventListener("mouseleave", () => { isDown = false; });
+    carousel.addEventListener("mouseup", () => { isDown = false; });
+    carousel.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        scrollAmount = scrollLeft - walk;
+    });
+});
 	
 </script>
 	
 </body>
 </html>
+
 
 
