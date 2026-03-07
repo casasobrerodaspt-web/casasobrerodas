@@ -758,25 +758,18 @@
         });
     });
 	
-	document.addEventListener("DOMContentLoaded", function() {
 
 	document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector(".carousel");
     if (!carousel) return;
 
-    const items = Array.from(carousel.children);
-    items.forEach(item => {
-        const clone = item.cloneNode(true);
-        carousel.appendChild(clone);
-    });
-
     let scrollAmount = 0;
-    const speed = 1; 
-    const frameTime = 16; 
+    const speed = 1; // velocidade do scroll automático (px por frame)
 
     function loop() {
         scrollAmount += speed;
-        if (scrollAmount >= carousel.scrollWidth / 2) {
+        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+            // volta ao início quando chega ao final
             scrollAmount = 0;
         }
         carousel.scrollLeft = scrollAmount;
@@ -785,6 +778,7 @@
 
     loop();
 
+    // Drag funcionalidade
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -792,7 +786,7 @@
     carousel.addEventListener("mousedown", (e) => {
         isDown = true;
         startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = scrollAmount;
+        scrollLeft = carousel.scrollLeft;
     });
 
     carousel.addEventListener("mouseleave", () => { isDown = false; });
@@ -802,7 +796,21 @@
         e.preventDefault();
         const x = e.pageX - carousel.offsetLeft;
         const walk = (x - startX) * 2;
-        scrollAmount = scrollLeft - walk;
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Para touch (telemóvel)
+    carousel.addEventListener("touchstart", (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener("touchend", () => { isDown = false; });
+    carousel.addEventListener("touchmove", (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollLeft - walk;
     });
 });
 	
@@ -810,6 +818,7 @@
 	
 </body>
 </html>
+
 
 
 
