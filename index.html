@@ -563,10 +563,19 @@
 <script>
     // MENU SEÇÕES
     function mostrarSecao(id){
-        document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
-        const secao = document.getElementById(id);
-        secao.classList.add('ativa');
-        window.scrollTo({top:0, behavior:'smooth'});
+
+    document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
+
+    const secao = document.getElementById(id);
+    secao.classList.add('ativa');
+
+    window.scrollTo({top:0, behavior:'smooth'});
+
+    // 👇 REINICIAR CARROSSEL AO VOLTAR AO INÍCIO
+    if(id === "home"){
+        setTimeout(iniciarCarrossel, 200);
+    }
+}
     }
 	   function abrirMenuMobile(){
 	    document.getElementById("menuMobile").classList.add("aberto");
@@ -712,9 +721,15 @@
         mostrarFoto(slideIndex);
     }
     function fecharModal(){
-        const video=document.getElementById('videoModal');
-        video.pause(); video.currentTime=0;
-        document.getElementById('modal').style.display='none';
+    const video = document.getElementById('videoModal');
+    video.pause();
+    video.currentTime = 0;
+
+    document.getElementById('modal').style.display = 'none';
+
+    // 👇 ir automaticamente para caravanas
+    mostrarSecao('caravanas');
+}
     }
     function mudarFoto(n){
         slideIndex+=n;
@@ -782,22 +797,35 @@
     let startX;
     let scrollLeft;
 
-    carousel.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
+    let carouselInterval;
 
-    carousel.addEventListener("mouseleave", () => { isDown = false; });
-    carousel.addEventListener("mouseup", () => { isDown = false; });
-    carousel.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
+function iniciarCarrossel() {
 
+    const carousel = document.querySelector(".carousel");
+    if (!carousel) return;
+
+    let scrollAmount = 0;
+    const speed = 1;
+
+    function loop() {
+
+        scrollAmount += speed;
+
+        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
+            scrollAmount = 0;
+        }
+
+        carousel.scrollLeft = scrollAmount;
+        carouselInterval = requestAnimationFrame(loop);
+    }
+
+    loop();
+}
+
+// ⏳ esperar layout estar pronto
+window.addEventListener("load", () => {
+    setTimeout(iniciarCarrossel, 300);
+});
     // Para touch (telemóvel)
     carousel.addEventListener("touchstart", (e) => {
         isDown = true;
