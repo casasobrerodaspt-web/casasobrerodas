@@ -367,6 +367,47 @@ html, body {
 	}
 	
 	}
+
+.footer {
+    background: #111;
+    color: #ccc;
+    padding: 40px 20px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.footer h3, .footer h4 {
+    color: #c97900;
+    margin-bottom: 10px;
+}
+
+.footer p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    color: #c97900;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 13px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
 </style>
 
 
@@ -586,6 +627,40 @@ html, body {
     </div>
 </div>
 
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>Casas Sobre Rodas</h3>
+      <p>Caravanas de qualidade, prontas a viajar.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p><a href="tel:+351966097073">📞 +351 966 097 073</a></p>
+      <p><a href="mailto:casasobrerodaspt@gmail.com">📧 casasobrerodaspt@gmail.com</a></p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Localização</h4>
+      <p>📍 Setúbal, Portugal</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Links rápidos</h4>
+      <a href="#home">Início</a><br>
+      <a href="#caravanas">Caravanas</a><br>
+      <a href="#contacto">Contacto</a><br>
+      <a href="#sobre">Sobre</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Casas Sobre Rodas — Todos os direitos reservados
+  </div>
+</footer>
+</body>
 <script>
 
     if(id === "home"){
