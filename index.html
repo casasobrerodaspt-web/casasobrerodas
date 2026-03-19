@@ -561,8 +561,7 @@
 </div>
 
 <script>
-   <script>
-// MENU SEÇÕES
+
 function mostrarSecao(id){
     document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
 
@@ -571,7 +570,6 @@ function mostrarSecao(id){
 
     window.scrollTo({top:0, behavior:'smooth'});
 
-    // reiniciar carrossel ao voltar ao início
     if(id === "home"){
         setTimeout(iniciarCarrossel, 200);
     }
@@ -587,7 +585,6 @@ function fecharMenuMobile(){
     document.getElementById("overlay").style.display="none";
 }
 
-// GALERIA
 let slideIndex = 0;
 let fotosAtuais = [];
 
@@ -764,7 +761,6 @@ function toggleZoom(){
     document.getElementById('imgModal').classList.toggle('zoomed');
 }
 
-// CARROSSEL PROFISSIONAL
 let animationId;
 let scrollAmount = 0;
 let isPaused = false;
@@ -791,11 +787,9 @@ function iniciarCarrossel(){
 
     loop();
 
-    // PAUSAR COM RATO
     carousel.addEventListener("mouseenter", () => isPaused = true);
     carousel.addEventListener("mouseleave", () => isPaused = false);
 
-    // DRAG
     let isDown = false;
     let startX;
     let scrollStart;
@@ -818,7 +812,6 @@ function iniciarCarrossel(){
     });
 }
 
-// INICIAR QUANDO CARREGA
 window.addEventListener("load", () => {
     setTimeout(iniciarCarrossel, 300);
 });
