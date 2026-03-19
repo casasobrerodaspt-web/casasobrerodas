@@ -561,9 +561,9 @@
 </div>
 
 <script>
-    // MENU SEÇÕES
-    function mostrarSecao(id){
-
+   <script>
+// MENU SEÇÕES
+function mostrarSecao(id){
     document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
 
     const secao = document.getElementById(id);
@@ -571,24 +571,26 @@
 
     window.scrollTo({top:0, behavior:'smooth'});
 
-    // 👇 REINICIAR CARROSSEL AO VOLTAR AO INÍCIO
+    // reiniciar carrossel ao voltar ao início
     if(id === "home"){
         setTimeout(iniciarCarrossel, 200);
     }
 }
-    }
-	   function abrirMenuMobile(){
-	    document.getElementById("menuMobile").classList.add("aberto");
-	    document.getElementById("overlay").style.display="block";
-	}
 
-	function fecharMenuMobile(){
-	    document.getElementById("menuMobile").classList.remove("aberto");
-	    document.getElementById("overlay").style.display="none";
-	}
-    // GALERIA
-    let slideIndex = 0;
-    let fotosAtuais = [];
+function abrirMenuMobile(){
+    document.getElementById("menuMobile").classList.add("aberto");
+    document.getElementById("overlay").style.display="block";
+}
+
+function fecharMenuMobile(){
+    document.getElementById("menuMobile").classList.remove("aberto");
+    document.getElementById("overlay").style.display="none";
+}
+
+// GALERIA
+let slideIndex = 0;
+let fotosAtuais = [];
+
     let galerias = [
         [ "Firebrand.473.2006/Firebrand473(1).jpg",
       "Firebrand.473.2006/Firebrand473(2).jpg", 
@@ -714,141 +716,113 @@
 	],
 ];
 
-    function abrirGaleria(n){
-        slideIndex=0;
-        fotosAtuais=galerias[n-1];
-        document.getElementById('modal').style.display='block';
-        mostrarFoto(slideIndex);
-    }
-    function fecharModal(){
+function abrirGaleria(n){
+    slideIndex = 0;
+    fotosAtuais = galerias[n-1];
+    document.getElementById('modal').style.display = 'block';
+    mostrarFoto(slideIndex);
+}
+
+function fecharModal(){
     const video = document.getElementById('videoModal');
     video.pause();
     video.currentTime = 0;
 
     document.getElementById('modal').style.display = 'none';
 
-    // 👇 ir automaticamente para caravanas
     mostrarSecao('caravanas');
 }
-    }
-    function mudarFoto(n){
-        slideIndex+=n;
-        if(slideIndex>=fotosAtuais.length) slideIndex=0;
-        if(slideIndex<0) slideIndex=fotosAtuais.length-1;
-        mostrarFoto(slideIndex);
-    }
-    function mostrarFoto(n){
-        const img=document.getElementById('imgModal');
-        img.classList.remove('zoomed');
-        const video=document.getElementById('videoModal');
-        const ficheiro=fotosAtuais[n];
-        const prev=document.querySelector('.prev');
-        const next=document.querySelector('.next');
-        if(fotosAtuais.length<=1){ prev.style.display='none'; next.style.display='none'; } else { prev.style.display='block'; next.style.display='block'; }
-        if(ficheiro.endsWith('.mp4')){
-            img.style.display='none';
-            video.style.display='block';
-            video.src=ficheiro;
-            video.load(); video.play();
-        } else {
-            video.pause(); video.currentTime=0;
-            video.style.display='none';
-            img.style.display='block';
-            img.src=ficheiro;
-        }
-    }
-    function toggleZoom(){ document.getElementById('imgModal').classList.toggle('zoomed'); }
 
-    // swipe touch
-    let startX=0;
-    document.addEventListener('DOMContentLoaded',()=>{
-        const modal=document.getElementById('modal');
-        modal.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-        modal.addEventListener('touchend', e => {
-            let endX = e.changedTouches[0].clientX;
-            let diff = startX - endX;
-            if(diff>50) mudarFoto(1);
-            if(diff<-50) mudarFoto(-1);
-        });
-    });
-	
-
-	document.addEventListener("DOMContentLoaded", function() {
-    const carousel = document.querySelector(".carousel");
-    if (!carousel) return;
-
-    let scrollAmount = 0;
-    const speed = 1; // velocidade do scroll automático (px por frame)
-
-    function loop() {
-        scrollAmount += speed;
-        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-            // volta ao início quando chega ao final
-            scrollAmount = 0;
-        }
-        carousel.scrollLeft = scrollAmount;
-        requestAnimationFrame(loop);
-    }
-
-    loop();
-
-    // Drag funcionalidade
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    let carouselInterval;
-
-function iniciarCarrossel() {
-
-    const carousel = document.querySelector(".carousel");
-    if (!carousel) return;
-
-    let scrollAmount = 0;
-    const speed = 1;
-
-    function loop() {
-
-        scrollAmount += speed;
-
-        if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-            scrollAmount = 0;
-        }
-
-        carousel.scrollLeft = scrollAmount;
-        carouselInterval = requestAnimationFrame(loop);
-    }
-
-    loop();
+function mudarFoto(n){
+    slideIndex += n;
+    if(slideIndex >= fotosAtuais.length) slideIndex = 0;
+    if(slideIndex < 0) slideIndex = fotosAtuais.length - 1;
+    mostrarFoto(slideIndex);
 }
 
-// ⏳ esperar layout estar pronto
+function mostrarFoto(n){
+    const img = document.getElementById('imgModal');
+    const video = document.getElementById('videoModal');
+    const ficheiro = fotosAtuais[n];
+
+    if(ficheiro.endsWith('.mp4')){
+        img.style.display = 'none';
+        video.style.display = 'block';
+        video.src = ficheiro;
+        video.load();
+        video.play();
+    } else {
+        video.pause();
+        video.currentTime = 0;
+        video.style.display = 'none';
+        img.style.display = 'block';
+        img.src = ficheiro;
+    }
+}
+
+function toggleZoom(){
+    document.getElementById('imgModal').classList.toggle('zoomed');
+}
+
+// CARROSSEL PROFISSIONAL
+let animationId;
+let scrollAmount = 0;
+let isPaused = false;
+
+function iniciarCarrossel(){
+    const carousel = document.querySelector(".carousel");
+    if (!carousel) return;
+
+    cancelAnimationFrame(animationId);
+
+    function loop(){
+        if(!isPaused){
+            scrollAmount += 0.5;
+
+            if(scrollAmount >= carousel.scrollWidth - carousel.clientWidth){
+                scrollAmount = 0;
+            }
+
+            carousel.scrollLeft = scrollAmount;
+        }
+
+        animationId = requestAnimationFrame(loop);
+    }
+
+    loop();
+
+    // PAUSAR COM RATO
+    carousel.addEventListener("mouseenter", () => isPaused = true);
+    carousel.addEventListener("mouseleave", () => isPaused = false);
+
+    // DRAG
+    let isDown = false;
+    let startX;
+    let scrollStart;
+
+    carousel.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollStart = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener("mouseup", () => isDown = false);
+    carousel.addEventListener("mouseleave", () => isDown = false);
+
+    carousel.addEventListener("mousemove", (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        carousel.scrollLeft = scrollStart - walk;
+    });
+}
+
+// INICIAR QUANDO CARREGA
 window.addEventListener("load", () => {
     setTimeout(iniciarCarrossel, 300);
 });
-    // Para touch (telemóvel)
-    carousel.addEventListener("touchstart", (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-    carousel.addEventListener("touchend", () => { isDown = false; });
-    carousel.addEventListener("touchmove", (e) => {
-        if (!isDown) return;
-        const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-});
-	
 </script>
 	
 </body>
 </html>
-
-
-
-
-
-
-
