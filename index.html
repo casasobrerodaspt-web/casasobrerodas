@@ -298,11 +298,25 @@
 .sobre p { font-size: 18px; line-height: 1.6; color: #333; margin-bottom: 15px; }
 
 	
-    .secao { padding: 20px; display: none; }
-    .secao.ativa { display: block; }
-
+.secao {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    padding: 20px;
+}
 	
+.section {
+    scroll-snap-stop: always;
+}
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+	
     .video-thumb { position: relative; }
     .play-icon {
         position: absolute;
@@ -361,10 +375,10 @@
 
 <!-- MENU DESKTOP -->
 <div class="menu-lateral">
-    <a onclick="mostrarSecao('home')">Início</a>
-    <a onclick="mostrarSecao('caravanas')">Caravanas</a>
-    <a onclick="mostrarSecao('contacto')">Contacto</a>
-    <a onclick="mostrarSecao('sobre')">Sobre</a>
+	<a href="#home">Início</a>
+	<a href="#caravanas">Caravanas</a>
+	<a href="#contacto">Contacto</a>
+	<a href="#sobre">Sobre</a>
 </div>
 
 <!-- BOTÃO MOBILE -->
@@ -573,14 +587,6 @@
 </div>
 
 <script>
-
-function mostrarSecao(id){
-    document.querySelectorAll('.secao').forEach(sec => sec.classList.remove('ativa'));
-
-    const secao = document.getElementById(id);
-    secao.classList.add('ativa');
-
-    window.scrollTo({top:0, behavior:'smooth'});
 
     if(id === "home"){
         setTimeout(iniciarCarrossel, 200);
